@@ -20,7 +20,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 public class SupportFragment extends Fragment implements ISupportFragment {
     final SupportFragmentDelegate mDelegate = new SupportFragmentDelegate(this);
     protected SupportActivity _mActivity;
-
+    private String mStackTag;
     @Override
     public SupportFragmentDelegate getSupportDelegate() {
         return mDelegate;
@@ -212,6 +212,16 @@ public class SupportFragment extends Fragment implements ISupportFragment {
     @Override
     public boolean onBackPressedSupport() {
         return mDelegate.onBackPressedSupport();
+    }
+
+    @Override
+    public void setStackTag(String tag) {
+        this.mStackTag = tag;
+    }
+
+    @Override
+    public String getStackTag() {
+        return mStackTag==null? getTag() : mStackTag;
     }
 
     /**

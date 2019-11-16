@@ -1,13 +1,13 @@
 package me.yokeyword.demo2.fragments
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.*
+import com.caih.cloudec.bridge.engine.demo2.layer.Layer1Fragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.yokeyword.demo2.R
 import me.yokeyword.demo2.base.BaseSwipeBackFragment
 import me.yokeyword.fragmentation.SupportFragment
+import me.yokeyword.fragmentation_swipeback.SwipeBackFragment
 
 class HomeFragment : BaseSwipeBackFragment() {
     companion object {
@@ -23,13 +23,13 @@ class HomeFragment : BaseSwipeBackFragment() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_home)
         setTitle("Home")
-//        setStackTag("Home")
+        setStackTag("Home")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btnLayer.setOnClickListener {
-//            start(Layer1Fragment.newInstance())
+            start(Layer1Fragment.newInstance())
         }
     }
 
@@ -47,7 +47,7 @@ class HomeFragment : BaseSwipeBackFragment() {
         btnNavigation.setOnClickListener {
           val bundle =  Bundle()
             bundle.putInt("layer",1)
-//            pushFragment(DemoFragment.newInstance(bundle))
+            pushFragment(DemoFragment.newInstance(bundle))
         }
         btnRedirect.setOnClickListener {
             pushRedirectFragment(newInstance())

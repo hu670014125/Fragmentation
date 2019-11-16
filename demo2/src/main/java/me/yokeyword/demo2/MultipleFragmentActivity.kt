@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import me.yokeyword.demo2.fragments.HomeFragment
 import me.yokeyword.fragmentation.Fragmentation
+import me.yokeyword.fragmentation.SupportActivity
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator
 import me.yokeyword.fragmentation.anim.FragmentAnimator
 import me.yokeyword.fragmentation_swipeback.SwipeBackActivity
@@ -16,12 +17,10 @@ class MultipleFragmentActivity : SwipeBackActivity() {
         super.onCreate(savedInstanceState)
         val rootFragment = FrameLayout(this)
         rootFragment.id = 0x0000231
-        loadRootFragment(rootFragment.id, HomeFragment.newInstance(),false,true)
         setContentView(rootFragment)
-        Fragmentation.builder()
-                .stackViewMode(Fragmentation.BUBBLE)
-                .debug(true)
-                .install()
+        if (findFragment(HomeFragment::class.java) ==null){
+            loadRootFragment(rootFragment.id, HomeFragment.newInstance())
+        }
 
     }
     override fun onCreateFragmentAnimator(): FragmentAnimator {

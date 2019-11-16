@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import me.yokeyword.demo2.R
+import me.yokeyword.fragmentation.Fragmentation
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,5 +15,9 @@ class MainActivity : AppCompatActivity() {
         btnMultipleFragmentActivity.setOnClickListener {
             startActivity(Intent(this,MultipleFragmentActivity::class.java))
         }
+        Fragmentation.builder()
+                .stackViewMode(Fragmentation.BUBBLE)
+                .debug(true)
+                .install()
     }
 }

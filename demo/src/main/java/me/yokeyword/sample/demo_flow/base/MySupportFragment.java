@@ -22,7 +22,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 public class MySupportFragment extends Fragment implements ISupportFragment {
     final SupportFragmentDelegate mDelegate = new SupportFragmentDelegate(this);
     protected FragmentActivity _mActivity;
-
+    private String mStackTag;
     @Override
     public SupportFragmentDelegate getSupportDelegate() {
         return mDelegate;
@@ -263,7 +263,15 @@ public class MySupportFragment extends Fragment implements ISupportFragment {
     public void putNewBundle(Bundle newBundle) {
         mDelegate.putNewBundle(newBundle);
     }
+    @Override
+    public void setStackTag(String tag) {
+        this.mStackTag = tag;
+    }
 
+    @Override
+    public String getStackTag() {
+        return mStackTag==null? getTag() : mStackTag;
+    }
 
     /****************************************以下为可选方法(Optional methods)******************************************************/
     // 自定制Support时，可移除不必要的方法

@@ -29,7 +29,7 @@ open class BaseSwipeBackFragment : SwipeBackFragment() {
         this.toolbar = LayoutInflater.from(this.context).inflate(R.layout.toolbar, null)
         this.rootView.addView(this.toolbar)
 
-        // 设置toolbar
+//         设置toolbar
         if (activity is AppCompatActivity) {
             toolbar.toolbar.title = ""
             toolbar.toolbar.subtitle = ""
@@ -39,11 +39,11 @@ open class BaseSwipeBackFragment : SwipeBackFragment() {
         }
 
 
-        // 设置沉浸式
-        ImmersionBar.with(this)
-                .titleBar(toolbar)
-                .statusBarDarkFont(displayStatusBarDarkFont(),0.5f)
-                .init()
+//        // 设置沉浸式
+//        ImmersionBar.with(this)
+//                .titleBar(toolbar)
+//                .statusBarDarkFont(displayStatusBarDarkFont(),0.5f)
+//                .init()
 
     }
     final  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -61,4 +61,7 @@ public interface ISupportFragment {
     void putNewBundle(Bundle newBundle);
 
     boolean onBackPressedSupport();
+    void setStackTag(String tag);
+
+    String getStackTag();
 }

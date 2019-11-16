@@ -536,6 +536,11 @@ class TransactionDelegate {
         fm.putFragment(bundle, FRAGMENTATION_STATE_SAVE_RESULT, from);
     }
 
+    private Fragment getRootFragment(FragmentManager fm){
+        List<Fragment> fragmentList = FragmentationMagician.getActiveFragments(fm);
+        return fragmentList.get(0);
+    }
+
     private void doPopTo(final String targetFragmentTag, boolean includeTargetFragment, FragmentManager fm, int popAnim) {
         handleAfterSaveInStateTransactionException(fm, "popTo()");
 
@@ -548,12 +553,22 @@ class TransactionDelegate {
 
         int flag = 0;
         if (includeTargetFragment) {
-            flag = FragmentManager.POP_BACK_STACK_INCLUSIVE;
+            String rootFragmentTag = getRootFragment(fm).getTag();
+            // 如果 targetFragmentTag 对应的Fragment已经是栈低了，此时就不能包含该Fragment否则会白屏
+            if (targetFragmentTag.equals(rootFragmentTag)) {
+                includeTargetFragment = false;
+            }
+            flag = targetFragmentTag.equals(rootFragmentTag) ? 0 : FragmentManager.POP_BACK_STACK_INCLUSIVE;
         }
 
         List<Fragment> willPopFragments = SupportHelper.getWillPopFragments(fm, targetFragmentTag, includeTargetFragment);
         if (willPopFragments.size() <= 0) return;
 
+        // 如果要返回的Fragments size =1 即返回上一个界面，使用pop(FragmentManager fm)可以实现动画
+        if (willPopFragments.size() == 1) {
+            this.pop(fm);
+            return;
+        }
         Fragment top = willPopFragments.get(0);
         mockPopToAnim(top, targetFragmentTag, fm, flag, willPopFragments, popAnim);
     }
@@ -616,6 +631,13 @@ class TransactionDelegate {
                 }
             }
         }, animation.getDuration());
+
+        //处理退出动画
+        ISupportFragment topFragment = SupportHelper.getBackStackTopFragment(fm);
+        final View targetView = ((Fragment) topFragment).getView();
+        if (targetView !=null){
+            targetView.startAnimation(AnimationUtils.loadAnimation(mActivity, R.anim.h_fragment_pop_enter));
+        }
     }
 
 
