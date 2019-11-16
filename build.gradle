@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.2'
 //        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
@@ -23,9 +23,9 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 28
+    compileSdkVersion = 29
     minSdkVersion = 14
     targetSdkVersion = compileSdkVersion
 
-    appCompatVersion = "1.1.0-alpha01"
+    appCompatVersion = "1.1.0"
 }
