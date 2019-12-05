@@ -49,8 +49,8 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     api project(':fragmentation')
     api project(':fragmentation_swipeback')
-    api project(':dexMaker2')
-    api project(':dexMaker')
+//    api project(':dexMaker2')
+//    api project(':dexMaker')
 //    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.25.1'
     // fragment快速实现（可选）
     implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'

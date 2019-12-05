@@ -1,1 +1,1 @@
-include  ':fragmentation_core', ':fragmentation_swipeback', ':fragmentation', ':eventbus_activity_scope', ':dexMaker', ':dexMaker2',':demo2'
+include  ':fragmentation_core', ':fragmentation_swipeback', ':fragmentation', ':eventbus_activity_scope',':demo',':demo2'
