@@ -40,10 +40,10 @@ open class BaseSwipeBackFragment : SwipeBackFragment() {
 
 
 //        // 设置沉浸式
-//        ImmersionBar.with(this)
-//                .titleBar(toolbar)
-//                .statusBarDarkFont(displayStatusBarDarkFont(),0.5f)
-//                .init()
+        ImmersionBar.with(this)
+                .titleBar(toolbar)
+                .statusBarDarkFont(displayStatusBarDarkFont(),0.5f)
+                .init()
 
     }
     final  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -1,0 +1,11 @@
+
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+
+dependencies {
+    implementation 'com.jakewharton.android.repackaged:dalvik-dx:9.0.0_r3'
+}

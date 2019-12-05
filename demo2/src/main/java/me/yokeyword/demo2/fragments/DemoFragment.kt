@@ -15,7 +15,7 @@ import java.util.*
 
 
 @SuppressLint("NewApi")
-class DemoFragment : BaseSwipeBackFragment() {
+open class DemoFragment : BaseSwipeBackFragment() {
     companion object {
         @JvmStatic
         fun newInstance(bundle: Bundle = Bundle()): SupportFragment {
